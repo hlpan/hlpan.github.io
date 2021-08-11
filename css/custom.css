@@ -1,0 +1,8 @@
+.navbar-brand
+{
+    content: url("/img/logo2.png");
+    display: inline-block;
+    position: relative;
+    width: 160px;   
+}
+

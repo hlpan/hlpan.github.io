@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2021/08/11/hello-world/"/>
+    <url>/2021/08/11/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></div></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">$ hexo server<br></code></pre></div></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">$ hexo generate<br></code></pre></div></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></div></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>测试</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>修改Krita绘画软件</title>
+    <link href="/2021/08/10/new-krita-design/"/>
+    <url>/2021/08/10/new-krita-design/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>Krita是一款开源的全平台绘画软件。它本身是非常优秀的，但我就是爱折腾，因此打算基于它的代码修改出一个不一样的版本。</p></blockquote><h1 id="Krita是什么"><a href="#Krita是什么" class="headerlink" title="Krita是什么"></a>Krita是什么</h1><p><img src="https://raw.githubusercontent.com/hlpan/blog_image/master/imgkrita-ui-40.png" alt="Krita界面"></p><h1 id="我本人对它的界面有什么不满"><a href="#我本人对它的界面有什么不满" class="headerlink" title="我本人对它的界面有什么不满"></a>我本人对它的界面有什么不满</h1><ol><li>它的Tab看着有点落后，一点都不像Chrome或Edge这种现代的、轻快的多标签。如下图：<br><img src="https://raw.githubusercontent.com/hlpan/blog_image/master/img20210810222956.png"></li></ol><p>我希望它的tab能和标题栏合成一行，这样可以最大化地节省宝贵的空间。</p><ol start="2"><li><p>界面里面的按钮有冗余<br>比如下图中的图层面板，它有两个标题（”layers”），挤在一起显示，完全没有必要啊。其实面板根本不需要标题，平时使用的时候根本不关心的标题，只关心它的功能。<br><img src="https://raw.githubusercontent.com/hlpan/blog_image/master/img20210810223336.png" alt="标题重复"></p></li><li><p>界面过于自由<br>它的面板都是基本QT里面的<code>QDockWidget</code>实现的，可以自由地拖拽和停靠。这是一个优点，但有时候感觉过于自由了，有可能会使用户的学习成本变高。</p></li></ol><h1 id="修改思路-amp-进度"><a href="#修改思路-amp-进度" class="headerlink" title="修改思路&amp;进度"></a>修改思路&amp;进度</h1><h2 id="实现一个更节省空间的tab栏"><a href="#实现一个更节省空间的tab栏" class="headerlink" title="实现一个更节省空间的tab栏"></a>实现一个更节省空间的tab栏</h2><p>目前已经实现了一些基本的功能，可能还缺少美工方面的努力，如下图：<br><img src="https://raw.githubusercontent.com/hlpan/blog_image/master/img20210810225107.png" alt="tabbar和标题栏合一"><br>tab栏和标题栏合成一行了。<br>而且这个标题栏基本上实现了所有Windows的功能（拖拽窗口移动，拖拽到屏幕边缘实现窗口停靠等。）</p><h2 id="实现了一个新的面板控件"><a href="#实现了一个新的面板控件" class="headerlink" title="实现了一个新的面板控件"></a>实现了一个新的面板控件</h2><p>下图的红色区域就是一个浮动的面板，它可以自由移动，并磁吸到别的控件上。打算将所有需要移动的面板都放到这个里面，用于替换原来的QDockWidget。<br><img src="https://raw.githubusercontent.com/hlpan/blog_image/master/img20210810230200.png" alt="浮动画板"></p><h1 id="将来的打算"><a href="#将来的打算" class="headerlink" title="将来的打算"></a>将来的打算</h1><p>基本放弃这个项目了，主要原因是感觉它不再有趣了。</p><p>通过个项目，倒是学习不少QT的知识，对它有一个大致的了解。<br>个人感觉QT特别适合一些中小弄的项目，感觉不太适应这种大型的软件。（它还不够灵活，如果大型项目要基于它修改，又要改太多的东西）<br>但是没有办法，Krita本身是属于KDE的，它们都和qt有很深的渊源。</p><h1 id="最后附上修改后软件的视频"><a href="#最后附上修改后软件的视频" class="headerlink" title="最后附上修改后软件的视频"></a>最后附上修改后软件的视频</h1><p>留作纪念吧</p><p><video src="https://raw.githubusercontent.com/hlpan/blog_image/master/imgkrita_nd.mp4" controls="controls" width="500" height="300">您的浏览器不支持播放该视频！</video></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>画画</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>使用github的action自动地将md文件转换成静态网页</title>
+    <link href="/2021/08/02/use-github-action-to-deploy-pages/"/>
+    <url>/2021/08/02/use-github-action-to-deploy-pages/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>这应该是最简单的一种写博客的方法，懒人之选</p></blockquote><h1 id="什么都不用安装了"><a href="#什么都不用安装了" class="headerlink" title="什么都不用安装了"></a>什么都不用安装了</h1><p>😊</p><h1 id="只要能把md文件push到github就行了。"><a href="#只要能把md文件push到github就行了。" class="headerlink" title="只要能把md文件push到github就行了。"></a>只要能把md文件push到github就行了。</h1><p>在<code>source/_post</code>目录下增加文件：</p><p><code>use-github-action-to-deploy-pages.md</code></p><p>内容如下：</p><figure class="highlight md"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs md">---<br>layout: post<br>title: &#x27;使用github的action自动地将md文件转换成静态网页&#x27;<br>date: 2021-08-02 16:40:00<br><br>categories: 其他<br>tags: <br><span class="hljs-bullet">  -</span> github<br><span class="hljs-bullet">  -</span> pages <br><span class="hljs-section">  - action </span><br><span class="hljs-section">---</span><br><br><br><span class="hljs-quote">&gt; 这应该是最简单的一种写博客的方法，懒人之选</span><br><br><span class="hljs-section"># 什么都不用安装了</span><br><br>😊<br><br><span class="hljs-section"># 只要能把md文件push到github就行了。</span><br><br>文件名字<br>在<span class="hljs-emphasis">_post目录下增加  <span class="hljs-strong">**github-action-to-deploy-pages.md**</span></span><br><span class="hljs-emphasis">内容如下：</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">```md</span><br><span class="hljs-emphasis">code test</span><br><span class="hljs-emphasis">&#x27;&#x27;&#x27;</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis"># 图片测试</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">![<span class="hljs-string">测试图片</span>](<span class="hljs-link">https://raw.githubusercontent.com/hlpan/blog_image/master/img/image2021-07-04%20155415.png</span>)</span><br><span class="hljs-emphasis"></span><br></code></pre></div></td></tr></table></figure><h1 id="图片测试"><a href="#图片测试" class="headerlink" title="图片测试"></a>图片测试</h1><p><img src="https://raw.githubusercontent.com/hlpan/blog_image/master/img/image2021-07-04%20155415.png" alt="测试图片"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>github</tag>
+      
+      <tag>pages</tag>
+      
+      <tag>action</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
